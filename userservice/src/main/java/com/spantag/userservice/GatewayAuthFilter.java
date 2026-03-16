@@ -29,7 +29,6 @@ public class GatewayAuthFilter extends OncePerRequestFilter {
         if (username != null && !username.isBlank()
                 && SecurityContextHolder.getContext().getAuthentication() == null) {
 
-            // Build Spring Security Authentication from gateway headers
             List<SimpleGrantedAuthority> authorities = role != null && !role.isBlank()
                     ? List.of(new SimpleGrantedAuthority(role))
                     : List.of();
