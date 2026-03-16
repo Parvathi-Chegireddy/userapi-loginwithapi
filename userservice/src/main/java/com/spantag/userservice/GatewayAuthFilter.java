@@ -13,15 +13,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import java.io.IOException;
 import java.util.List;
 
-/**
- * Reads the X-Auth-Username and X-Auth-Role headers injected by the
- * gateway's JwtAuthFilter, and populates Spring Security's
- * SecurityContext so @PreAuthorize annotations work correctly.
- *
- * This filter trusts the gateway completely — it does NOT re-validate
- * the JWT. In production, bind this service to localhost only so
- * it is only reachable via the gateway, never directly from the internet.
- */
+
 @Component
 public class GatewayAuthFilter extends OncePerRequestFilter {
 
