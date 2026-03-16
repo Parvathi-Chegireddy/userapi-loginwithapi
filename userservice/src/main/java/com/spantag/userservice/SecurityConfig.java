@@ -16,7 +16,7 @@ import java.util.List;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity(prePostEnabled = true) // enables @PreAuthorize on controller methods
+@EnableMethodSecurity(prePostEnabled = true) 
 public class SecurityConfig {
 
     private final GatewayAuthFilter gatewayAuthFilter;
@@ -47,12 +47,9 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .sessionManagement(s -> s
                     .sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-            // Add gateway auth filter BEFORE Spring's default auth filter
             .addFilterBefore(gatewayAuthFilter,
                     UsernamePasswordAuthenticationFilter.class)
             .authorizeHttpRequests(auth -> auth
-                    // All access control enforced by @PreAuthorize on methods
-                    // Gateway already blocked unauthenticated requests
                     .anyRequest().authenticated()
             )
             .exceptionHandling(ex -> ex
