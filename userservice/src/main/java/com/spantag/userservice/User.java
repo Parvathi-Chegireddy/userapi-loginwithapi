@@ -22,13 +22,12 @@ public class User {
     private String email;
 
     private boolean enabled = true;
-
-    // OAuth2 fields — null for regular users
+    
     @Column(name = "provider")
-    private String provider;        // "google", "github", null for local
+    private String provider;       
 
     @Column(name = "provider_id")
-    private String providerId;      // OAuth2 subject ID
+    private String providerId;      
 
     @Column(name = "display_name")
     private String displayName;
